@@ -7,7 +7,11 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-
+html,
+body {
+	width: 100%;
+	height: 100%;
+}
 :root {
 	--glass: rgba(16, 20, 45, 0.18);
 	--white: #ffffff;
@@ -18,22 +22,12 @@
 /* ===========================
    BODY
 =========================== */
-body {
-	font-family: "Poppins", sans-serif;
-	background: url("assets/images/bg.jfif");
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-
-	min-height: 100svh;
-	min-height: 100dvh;
-
-	position: relative;
-
-	overflow-x: hidden;
-	overflow-y: auto;
-
-	animation: bgZoom 30s ease-in-out infinite alternate;
+body{
+    background-image:url("assets/images/bg.jfif");
+    background-size:cover;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
 }
 @keyframes bgZoom {
 	from {
@@ -63,18 +57,20 @@ body {
 =========================== */
 
 .landing {
+	position: relative;
+
 	width: 100%;
 
-	height: 100svh;
-	height: 100dvh;
+	height: 100vh;
 
 	display: flex;
+
 	justify-content: center;
+
 	align-items: center;
 
-	padding: 16px;
+	padding: 20px;
 
-	position: relative;
 	z-index: 10;
 }
 /* ===========================
@@ -262,7 +258,7 @@ p {
 =========================== */
 
 button {
-	width:min(240px,100%);
+	width: min(240px, 100%);
 	height: 58px;
 
 	position: relative;
@@ -792,4 +788,25 @@ button:hover::before {
 	100% {
 		transform: translateX(0);
 	}
+}
+/* ==========================================
+   MOBILE BACKGROUND
+========================================== */
+
+@media (max-width:768px){
+
+    body{
+
+        background-image:url("assets/images/bg-mobile.png");
+
+        background-size:cover;
+
+        background-position:center center;
+
+        background-repeat:no-repeat;
+
+        background-attachment:scroll;
+
+    }
+
 }
