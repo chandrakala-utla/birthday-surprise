@@ -1,0 +1,2050 @@
+/*==========================================================
+    BIRTHDAY SURPRISE WEBSITE
+    Part 1A
+    Reset • Body • Overlay • Global • Buttons
+==========================================================*/
+
+/*==========================================================
+RESET
+==========================================================*/
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: "Poppins", sans-serif;
+
+	background: url("assets/images/bg.jfif") center center/cover no-repeat fixed;
+
+	color: #ffffff;
+
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	min-height: 100vh;
+
+	position: relative;
+}
+body.flash::before {
+	content: "";
+
+	position: fixed;
+
+	inset: 0;
+
+	background: white;
+
+	opacity: 0.9;
+
+	animation: flash 0.5s forwards;
+
+	z-index: 99999;
+}
+
+@keyframes flash {
+	from {
+		opacity: 0.9;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+/*==========================================================
+CUSTOM SCROLLBAR
+==========================================================*/
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #ff5d98;
+
+	border-radius: 20px;
+}
+
+::selection {
+	background: #ff5d98;
+
+	color: #fff;
+}
+
+/*==========================================================
+OVERLAY
+==========================================================*/
+
+.overlay {
+	position: fixed;
+
+	inset: 0;
+
+	background: linear-gradient(rgba(6, 10, 35, 0.35), rgba(6, 10, 35, 0.82));
+
+	backdrop-filter: blur(2px);
+
+	z-index: 1;
+}
+
+/*==========================================================
+GLOBAL STYLES
+==========================================================*/
+
+section {
+	width: 100%;
+
+	min-height: 100vh;
+
+	display: flex;
+
+	justify-content: center;
+
+	align-items: center;
+
+	flex-direction: column;
+
+	padding: 90px 20px;
+
+	position: relative;
+
+	z-index: 5;
+}
+
+.scene {
+	width: 100%;
+
+	min-height: 100vh;
+
+	display: flex;
+
+	justify-content: center;
+
+	align-items: center;
+
+	flex-direction: column;
+
+	position: relative;
+
+	padding: 80px 20px;
+}
+
+img {
+	display: block;
+
+	max-width: 100%;
+}
+
+a {
+	text-decoration: none;
+
+	color: inherit;
+}
+
+/*==========================================================
+COMMON HEADINGS
+==========================================================*/
+.welcome-text {
+	animation: titleGlow 2s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+	0%,
+	100% {
+		text-shadow: 0 0 10px #ffd1e8;
+	}
+
+	50% {
+		text-shadow:
+			0 0 30px #fff,
+			0 0 50px #ffb4dc;
+	}
+}
+.section-title {
+	font-family: "Great Vibes", cursive;
+
+	font-size: 64px;
+
+	color: #ffe5f2;
+
+	font-weight: 400;
+
+	text-align: center;
+
+	margin-bottom: 45px;
+
+	text-shadow: 0 0 15px rgba(255, 180, 220, 0.3);
+}
+
+/*==========================================================
+COMMON PARAGRAPHS
+==========================================================*/
+
+.section-text {
+	max-width: 850px;
+
+	text-align: center;
+
+	line-height: 1.8;
+
+	font-size: 20px;
+
+	opacity: 0.92;
+}
+
+/*==========================================================
+BUTTONS
+==========================================================*/
+
+button {
+	padding: 15px 38px;
+
+	border: none;
+
+	outline: none;
+
+	border-radius: 50px;
+
+	cursor: pointer;
+
+	font-size: 17px;
+
+	font-weight: 600;
+
+	color: white;
+
+	background: linear-gradient(45deg, #ff2d75, #ff74ae);
+
+	box-shadow: 0 14px 35px rgba(255, 40, 120, 0.35);
+
+	transition:
+		transform 0.35s,
+		box-shadow 0.35s,
+		opacity 0.35s;
+}
+
+button:hover {
+	transform: translateY(-6px);
+
+	box-shadow: 0 20px 45px rgba(255, 40, 120, 0.45);
+}
+
+button:active {
+	transform: scale(0.97);
+}
+
+button:disabled {
+	opacity: 0.6;
+
+	cursor: not-allowed;
+}
+
+/*==========================================================
+COMMON NEXT BUTTON
+==========================================================*/
+
+.next-btn {
+	margin-top: 45px;
+}
+#continueBtn {
+	margin-top: 30px;
+}
+/*==========================================================
+FADE HELPERS
+==========================================================*/
+
+.hidden {
+	display: none;
+}
+
+.fade-in {
+	animation: fadeIn 1s forwards;
+}
+
+.fade-out {
+	animation: fadeOut 0.8s forwards;
+}
+/*==========================================================
+PART 1B
+BACKGROUND EFFECTS
+Stars • Hearts • Sparkles • Moon
+==========================================================*/
+
+/*==========================================================
+STARS
+==========================================================*/
+
+#stars {
+	position: fixed;
+
+	inset: 0;
+
+	overflow: hidden;
+
+	pointer-events: none;
+
+	z-index: 2;
+}
+
+.star {
+	position: absolute;
+
+	width: 2px;
+
+	height: 2px;
+
+	background: #ffffff;
+
+	border-radius: 50%;
+
+	opacity: 0.25;
+
+	animation: twinkle linear infinite;
+}
+
+/*==========================================================
+LARGE STARS
+==========================================================*/
+
+.star.large {
+	width: 4px;
+
+	height: 4px;
+
+	opacity: 0.75;
+
+	box-shadow:
+		0 0 6px #ffffff,
+		0 0 12px rgba(255, 255, 255, 0.9);
+}
+
+/*==========================================================
+HEARTS
+==========================================================*/
+
+#hearts {
+	position: fixed;
+	inset: 0;
+	overflow: hidden;
+	pointer-events: none;
+	z-index: 2;
+}
+.heart {
+	position: fixed;
+
+	bottom: -50px;
+
+	color: #ff5fa2;
+
+	pointer-events: none;
+
+	opacity: 0.9;
+
+	z-index: 2;
+
+	animation: heartFloat linear forwards;
+
+	text-shadow: 0 0 10px rgba(255, 95, 162, 0.8);
+}
+@keyframes heartFloat {
+	0% {
+		transform: translateY(0) scale(0.5);
+
+		opacity: 0;
+	}
+
+	20% {
+		opacity: 1;
+	}
+
+	100% {
+		transform: translateY(-120vh) scale(1.2);
+
+		opacity: 0;
+	}
+}
+/*==========================================================
+SPARKLES
+==========================================================*/
+
+#sparkles {
+	position: fixed;
+
+	inset: 0;
+
+	overflow: hidden;
+
+	pointer-events: none;
+
+	z-index: 4;
+}
+
+.sparkle {
+	position: absolute;
+
+	width: 5px;
+
+	height: 5px;
+
+	background: white;
+
+	border-radius: 50%;
+
+	box-shadow:
+		0 0 10px white,
+		0 0 20px rgba(255, 255, 255, 0.8);
+
+	animation: sparkleAnim 2s linear forwards;
+}
+
+/*==========================================================
+BURST PARTICLES
+==========================================================*/
+
+.burst {
+	position: fixed;
+
+	width: 10px;
+
+	height: 10px;
+
+	border-radius: 50%;
+
+	background: #ffd54d;
+
+	pointer-events: none;
+
+	z-index: 999;
+
+	box-shadow:
+		0 0 12px gold,
+		0 0 25px orange;
+}
+
+/*==========================================================
+MOON
+==========================================================*/
+
+.moon {
+	position: absolute;
+
+	top: 70px;
+
+	right: 80px;
+
+	width: 120px;
+
+	height: 120px;
+
+	border-radius: 50%;
+
+	background: #fff8dc;
+
+	box-shadow:
+		0 0 25px #ffffff,
+		0 0 60px rgba(255, 255, 180, 0.45),
+		0 0 120px rgba(255, 255, 255, 0.18);
+}
+
+/*==========================================================
+MOON GLOW
+==========================================================*/
+
+.moon::before {
+	content: "";
+
+	position: absolute;
+
+	inset: -25px;
+
+	border-radius: 50%;
+
+	background: radial-gradient(rgba(255, 255, 220, 0.35), transparent 70%);
+
+	filter: blur(18px);
+
+	animation: moonGlow 4s ease-in-out infinite;
+}
+
+/*==========================================================
+BACKGROUND GLOW
+==========================================================*/
+
+.bg-glow {
+	position: absolute;
+
+	width: 500px;
+
+	height: 500px;
+
+	border-radius: 50%;
+
+	background: radial-gradient(rgba(255, 130, 190, 0.18), transparent 70%);
+
+	filter: blur(80px);
+
+	pointer-events: none;
+}
+
+.bg-glow.left {
+	left: -180px;
+
+	top: 20%;
+}
+
+.bg-glow.right {
+	right: -180px;
+
+	bottom: 10%;
+}
+
+/*==========================================================
+FLOATING LIGHT
+==========================================================*/
+
+.light-dot {
+	position: absolute;
+
+	width: 6px;
+
+	height: 6px;
+
+	background: white;
+
+	border-radius: 50%;
+
+	opacity: 0.6;
+
+	filter: blur(0.5px);
+
+	animation: lightFloat linear infinite;
+}
+/*==========================================================
+PART 1C
+GIFT SECTION
+==========================================================*/
+
+/*==========================================================
+GIFT CONTENT
+==========================================================*/
+
+.gift-content {
+	width: 92%;
+	max-width: 760px;
+
+	text-align: center;
+
+	position: relative;
+
+	z-index: 10;
+}
+
+.welcome-text {
+	letter-spacing: 5px;
+
+	text-transform: uppercase;
+
+	color: #ffd8ea;
+
+	font-size: 15px;
+
+	font-weight: 500;
+
+	margin-bottom: 25px;
+}
+
+.gift-content h1 {
+	font-family: "Great Vibes", cursive;
+
+	font-size: clamp(46px, 6vw, 72px);
+
+	font-weight: 400;
+
+	line-height: 1.2;
+
+	margin-bottom: 20px;
+
+	color: #ffffff;
+
+	text-shadow:
+		0 0 15px rgba(255, 180, 220, 0.3),
+		0 0 30px rgba(255, 180, 220, 0.2);
+}
+
+.gift-content p {
+	font-size: 21px;
+
+	line-height: 1.8;
+
+	opacity: 0.92;
+
+	margin-bottom: 60px;
+}
+
+/*==========================================================
+GIFT WRAPPER
+==========================================================*/
+
+.gift-wrapper {
+	position: relative;
+
+	width: 240px;
+
+	height: 235px;
+
+	margin: auto;
+
+	user-select: none;
+
+	animation: giftFloat 3s ease-in-out infinite;
+
+	cursor: pointer;
+
+	transition: 0.35s;
+}
+@keyframes giftFloat {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(-18px);
+	}
+}
+.gift-wrapper::after {
+	content: "";
+
+	position: absolute;
+
+	width: 180px;
+
+	height: 35px;
+
+	background: rgba(255, 220, 90, 0.35);
+
+	left: 50%;
+
+	bottom: -25px;
+
+	transform: translateX(-50%);
+
+	border-radius: 50%;
+
+	filter: blur(20px);
+
+	animation: shadowPulse 3s infinite;
+}
+
+@keyframes shadowPulse {
+	0%,
+	100% {
+		transform: translateX(-50%) scale(1);
+
+		opacity: 0.5;
+	}
+
+	50% {
+		transform: translateX(-50%) scale(0.8);
+
+		opacity: 0.25;
+	}
+}
+.gift-wrapper:hover {
+	transform: scale(1.05);
+}
+
+/*==========================================================
+GIFT GLOW
+==========================================================*/
+
+.gift-glow {
+	position: absolute;
+
+	left: 50%;
+
+	top: 50%;
+
+	transform: translate(-50%, -50%);
+
+	width: 330px;
+
+	height: 330px;
+
+	border-radius: 50%;
+
+	background: radial-gradient(rgba(255, 170, 220, 0.38), transparent 70%);
+
+	filter: blur(45px);
+
+	animation: pulseGlow 2.3s infinite;
+}
+
+.gift-wrapper:hover .gift-glow {
+	animation: pulseGlowFast 1.3s infinite;
+}
+
+/*==========================================================
+GIFT BOX
+==========================================================*/
+
+.gift-box {
+	position: relative;
+
+	width: 100%;
+
+	height: 100%;
+}
+.gift-box.shake {
+	animation: giftShake 0.5s;
+}
+
+@keyframes giftShake {
+	0% {
+		transform: rotate(0);
+	}
+
+	20% {
+		transform: rotate(-6deg);
+	}
+
+	40% {
+		transform: rotate(6deg);
+	}
+
+	60% {
+		transform: rotate(-6deg);
+	}
+
+	80% {
+		transform: rotate(6deg);
+	}
+
+	100% {
+		transform: rotate(0);
+	}
+}
+/*==========================================================
+BOX BODY
+==========================================================*/
+
+.gift-body {
+	position: absolute;
+
+	bottom: 0;
+
+	left: 20px;
+
+	width: 200px;
+
+	height: 145px;
+
+	border-radius: 16px;
+
+	overflow: hidden;
+
+	background: linear-gradient(180deg, #ff62a8, #ff1e76);
+
+	box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+
+	transition: 0.5s;
+}
+
+.gift-wrapper:hover .gift-body {
+	box-shadow: 0 25px 55px rgba(255, 40, 120, 0.45);
+}
+.gift-sparkles {
+	position: absolute;
+
+	inset: -50px;
+
+	pointer-events: none;
+}
+
+.spark {
+	position: absolute;
+
+	width: 6px;
+
+	height: 6px;
+
+	background: white;
+
+	border-radius: 50%;
+
+	animation: spark 2s linear infinite;
+}
+
+@keyframes spark {
+	from {
+		opacity: 0;
+
+		transform: scale(0.2);
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+
+		transform: translateY(-40px) scale(1.5);
+	}
+}
+/*==========================================================
+RIBBON
+==========================================================*/
+
+.body-vertical {
+	position: absolute;
+
+	left: 50%;
+
+	transform: translateX(-50%);
+
+	width: 30px;
+
+	height: 100%;
+
+	background: #ffd54d;
+}
+
+.body-horizontal {
+	position: absolute;
+
+	top: 50%;
+
+	transform: translateY(-50%);
+
+	width: 100%;
+
+	height: 22px;
+
+	background: #ffd54d;
+}
+
+/*==========================================================
+LID
+==========================================================*/
+
+.gift-lid {
+	position: absolute;
+
+	top: 28px;
+
+	left: 0;
+
+	width: 240px;
+
+	height: 55px;
+
+	border-radius: 16px;
+
+	background: linear-gradient(180deg, #ff73b7, #ff2b83);
+
+	transform-origin: left center;
+
+	transition: 1s;
+
+	z-index: 10;
+}
+
+.lid-horizontal {
+	position: absolute;
+
+	top: 17px;
+
+	width: 100%;
+
+	height: 22px;
+
+	background: #ffd54d;
+}
+
+.lid-vertical {
+	position: absolute;
+
+	left: 50%;
+
+	transform: translateX(-50%);
+
+	width: 30px;
+
+	height: 100%;
+
+	background: #ffd54d;
+}
+
+/*==========================================================
+BOW
+==========================================================*/
+
+.bow {
+	position: absolute;
+
+	left: 50%;
+
+	top: -20px;
+
+	transform: translateX(-50%);
+}
+
+.left-loop,
+.right-loop {
+	display: inline-block;
+
+	width: 38px;
+
+	height: 38px;
+
+	border: 8px solid #ffd54d;
+
+	border-radius: 50%;
+}
+
+.left-loop {
+	transform: rotate(-35deg);
+}
+
+.right-loop {
+	margin-left: -10px;
+
+	transform: rotate(35deg);
+}
+
+.knot {
+	position: absolute;
+
+	left: 50%;
+
+	top: 14px;
+
+	transform: translateX(-50%);
+
+	width: 16px;
+
+	height: 16px;
+
+	border-radius: 50%;
+
+	background: #ffd54d;
+}
+
+/*==========================================================
+CLICK TEXT
+==========================================================*/
+
+.click-text {
+	margin-top: 40px;
+
+	letter-spacing: 4px;
+
+	text-transform: uppercase;
+
+	font-size: 15px;
+
+	font-weight: 600;
+
+	color: #ffe0ef;
+
+	animation: blink 2s infinite;
+}
+
+/*==========================================================
+OPEN ANIMATION
+==========================================================*/
+
+.gift-box.open .gift-lid {
+	transform: rotate(-35deg) translateY(-10px);
+}
+
+.gift-box.open .gift-body {
+	transform: scale(1.02);
+}
+
+/*==========================================================
+MAGIC PARTICLES
+==========================================================*/
+
+.magic-particle {
+	position: absolute;
+
+	width: 8px;
+
+	height: 8px;
+
+	border-radius: 50%;
+
+	background: white;
+
+	opacity: 0;
+
+	pointer-events: none;
+
+	box-shadow:
+		0 0 10px white,
+		0 0 20px pink;
+
+	animation: magicParticle 2s linear forwards;
+}
+/*==========================================================
+PART 2
+BIRTHDAY • GALLERY • CAKE
+==========================================================*/
+/*==========================================================
+BIRTHDAY
+==========================================================*/
+
+/*==========================
+LOADING STORY
+==========================*/
+
+.loading-story {
+	text-align: center;
+	z-index: 5;
+	animation: fadeUp 0.8s ease;
+}
+
+.loading-story h2 {
+	font-family: "Great Vibes", cursive;
+	font-size: 72px;
+	color: #fff;
+	margin-bottom: 50px;
+	text-shadow: 0 0 20px rgba(255, 255, 255, 0.35);
+}
+
+.loader {
+	width: 420px;
+	max-width: 90vw;
+	height: 18px;
+	background: rgba(255, 255, 255, 0.15);
+	border-radius: 30px;
+	overflow: hidden;
+	margin: auto;
+	box-shadow:
+		inset 0 0 12px rgba(255, 255, 255, 0.15),
+		0 0 25px rgba(255, 105, 180, 0.25);
+}
+
+.loader-fill {
+	width: 0;
+	height: 100%;
+	border-radius: 30px;
+
+	background: linear-gradient(90deg, #ff4f9f, #ff7ac2, #ffd166, #fff176);
+
+	background-size: 300% 100%;
+
+	animation: loaderGlow 2s linear infinite;
+
+	box-shadow:
+		0 0 12px #ff5fa2,
+		0 0 24px rgba(255, 105, 180, 0.5);
+}
+
+@keyframes loaderGlow {
+	from {
+		background-position: 0%;
+	}
+
+	to {
+		background-position: 300%;
+	}
+}
+.loading-stars {
+	margin-top: 18px;
+	color: #ffd76b;
+	font-size: 28px;
+	letter-spacing: 15px;
+
+	animation: twinkleLoading 1.5s infinite alternate;
+}
+
+@keyframes twinkleLoading {
+	from {
+		opacity: 0.4;
+		transform: scale(0.9);
+	}
+
+	to {
+		opacity: 1;
+		transform: scale(1.1);
+	}
+}
+#loadingText {
+	margin-top: 35px;
+	font-size: 26px;
+	color: white;
+	letter-spacing: 1px;
+	min-height: 40px;
+	text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes fadeUp {
+	from {
+		opacity: 0;
+		transform: translateY(40px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/*==========================================================
+BALLOONS
+==========================================================*/
+
+.balloon {
+	position: absolute;
+
+	width: 70px;
+
+	animation: floatBalloon linear infinite;
+}
+
+.balloon.left {
+	left: 6%;
+
+	bottom: -120px;
+
+	animation-duration: 9s;
+}
+
+.balloon.right {
+	right: 6%;
+
+	bottom: -120px;
+
+	animation-duration: 11s;
+}
+
+/*==========================================================
+CONFETTI
+==========================================================*/
+
+.confetti {
+	position: absolute;
+
+	width: 8px;
+
+	height: 16px;
+
+	opacity: 0.8;
+
+	animation: confettiFall linear forwards;
+}
+
+/*==========================================================
+SECTION TITLE
+==========================================================*/
+
+.section-title {
+	font-family: "Great Vibes", cursive;
+
+	font-size: 64px;
+
+	color: #ffe6f2;
+
+	margin-bottom: 50px;
+
+	text-align: center;
+
+	text-shadow: 0 0 15px rgba(255, 180, 220, 0.3);
+}
+
+/*==========================================================
+GALLERY
+==========================================================*/
+
+#galleryScene {
+	padding: 100px 20px;
+}
+
+.gallery {
+	width: 100%;
+
+	max-width: 1200px;
+
+	display: grid;
+
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+	gap: 35px;
+}
+
+/*==========================================================
+PHOTO CARD
+==========================================================*/
+
+.photo {
+	position: relative;
+
+	overflow: hidden;
+
+	border-radius: 24px;
+
+	background: rgba(255, 255, 255, 0.08);
+
+	backdrop-filter: blur(16px);
+
+	transition: 0.45s;
+
+	box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+.photo:hover {
+	transform: translateY(-12px) rotate(-2deg) scale(1.03);
+
+	box-shadow: 0 28px 55px rgba(255, 70, 150, 0.35);
+}
+
+/*==========================================================
+PHOTO IMAGE
+==========================================================*/
+
+.photo img {
+	width: 100%;
+
+	height: 320px;
+
+	object-fit: cover;
+
+	transition: 0.5s;
+}
+
+.photo:hover img {
+	transform: scale(1.08);
+}
+
+/*==========================================================
+PHOTO CAPTION
+==========================================================*/
+
+.photo span {
+	display: block;
+
+	padding: 18px;
+
+	text-align: center;
+
+	font-size: 18px;
+
+	color: #fff;
+}
+
+/*==========================================================
+PHOTO OVERLAY
+==========================================================*/
+
+.photo::after {
+	content: "❤";
+
+	position: absolute;
+
+	top: 15px;
+
+	right: 15px;
+
+	width: 40px;
+
+	height: 40px;
+
+	border-radius: 50%;
+
+	display: flex;
+
+	align-items: center;
+
+	justify-content: center;
+
+	background: rgba(255, 255, 255, 0.18);
+
+	backdrop-filter: blur(8px);
+
+	opacity: 0;
+
+	transition: 0.35s;
+}
+
+.photo:hover::after {
+	opacity: 1;
+}
+
+/*==================================================
+CAKE SECTION
+==================================================*/
+
+.cake-content {
+	display: flex;
+
+	flex-direction: column;
+
+	align-items: center;
+
+	justify-content: center;
+
+	gap: 20px;
+
+	width: 100%;
+}
+
+.cake-title {
+	font-size: 58px;
+
+	margin-bottom: 5px;
+}
+
+.cake-msg {
+	font-size: 22px;
+
+	line-height: 1.8;
+
+	margin-bottom: 10px;
+
+	text-align: center;
+}
+
+/*==================================================
+CAKE
+==================================================*/
+
+.cake-wrapper {
+	position: relative;
+
+	margin: 15px auto 20px;
+}
+
+.cake-shadow {
+	width: 270px;
+
+	height: 28px;
+
+	background: rgba(0, 0, 0, 0.35);
+
+	filter: blur(18px);
+
+	border-radius: 50%;
+
+	margin: auto;
+
+	animation: shadow 3s infinite;
+}
+
+@keyframes shadow {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(0.82);
+	}
+}
+
+.birthday-cake {
+	position: relative;
+
+	width: 260px;
+
+	height: 320px;
+
+	margin: auto;
+
+	animation: floatCake 3s ease-in-out infinite;
+}
+
+@keyframes floatCake {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(-12px);
+	}
+}
+
+/*==================================================
+TIERS
+==================================================*/
+
+.tier {
+	position: absolute;
+
+	left: 50%;
+
+	transform: translateX(-50%);
+
+	border-radius: 18px;
+
+	box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+
+	background: linear-gradient(#ff62a5, #ff1976);
+}
+
+.tier1 {
+	bottom: 0;
+
+	width: 260px;
+
+	height: 120px;
+}
+
+.tier2 {
+	bottom: 105px;
+
+	width: 200px;
+
+	height: 90px;
+}
+
+.tier3 {
+	bottom: 185px;
+
+	width: 145px;
+
+	height: 70px;
+}
+
+/*==================================================
+ICING
+==================================================*/
+
+.icing {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 16px;
+	background: white;
+	border-radius: 20px;
+}
+/*==========================
+TOP TIER
+==========================*/
+
+.tier3 .icing::after {
+	content: "";
+
+	position: absolute;
+
+	width: 12px;
+
+	height: 16px;
+
+	background: white;
+
+	border-radius: 0 0 10px 10px;
+
+	left: 18px;
+
+	top: 12px;
+
+	box-shadow:
+		26px 0 white,
+		52px 0 white,
+		78px 0 white;
+}
+
+/*==========================
+MIDDLE TIER
+==========================*/
+
+.tier2 .icing::after {
+	content: "";
+
+	position: absolute;
+
+	width: 12px;
+
+	height: 18px;
+
+	background: white;
+
+	border-radius: 0 0 10px 10px;
+
+	left: 18px;
+
+	top: 12px;
+
+	box-shadow:
+		30px 0 white,
+		60px 0 white,
+		90px 0 white,
+		120px 0 white;
+}
+
+/*==========================
+BOTTOM TIER
+==========================*/
+
+.tier1 .icing::after {
+	content: "";
+
+	position: absolute;
+
+	width: 12px;
+
+	height: 20px;
+
+	background: white;
+
+	border-radius: 0 0 10px 10px;
+
+	left: 16px;
+
+	top: 12px;
+
+	box-shadow:
+		34px 0 white,
+		68px 0 white,
+		102px 0 white,
+		136px 0 white,
+		170px 0 white,
+		204px 0 white;
+}
+
+.cherries {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 10;
+}
+.cherries span {
+	width: 12px;
+	height: 12px;
+	margin: 0 8px;
+	border-radius: 50%;
+	background: #b90035;
+	position: relative;
+
+	box-shadow:
+		inset -2px -2px 2px rgba(0, 0, 0, 0.25),
+		0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.cherries span::before {
+	content: "";
+	position: absolute;
+
+	width: 3px;
+	height: 10px;
+
+	background: #3f9d3d;
+
+	left: 5px;
+	top: -8px;
+
+	transform: rotate(-25deg);
+	border-radius: 2px;
+}
+.tier3 .cherries {
+	top: 28px;
+	gap: 18px;
+}
+
+.tier2 .cherries {
+	top: 30px;
+	gap: 18px;
+}
+
+.tier1 .cherries {
+	top: 34px;
+	gap: 18px;
+}
+/*==================================================
+CANDLES
+==================================================*/
+
+.candles {
+	position: absolute;
+
+	top: 30px;
+
+	left: 50%;
+
+	transform: translateX(-50%);
+
+	display: flex;
+
+	gap: 28px;
+}
+
+.candle {
+	width: 12px;
+
+	height: 60px;
+
+	background: white;
+
+	border-radius: 8px;
+
+	position: relative;
+}
+
+.flame {
+	position: absolute;
+
+	left: 50%;
+
+	top: -22px;
+
+	transform: translateX(-50%);
+
+	width: 16px;
+
+	height: 26px;
+
+	background: gold;
+
+	border-radius: 50%;
+
+	box-shadow:
+		0 0 18px gold,
+		0 0 35px orange;
+
+	animation: flicker 0.15s infinite alternate;
+}
+
+@keyframes flicker {
+	from {
+		transform: translateX(-50%) scale(0.9);
+	}
+
+	to {
+		transform: translateX(-50%) scale(1.15);
+	}
+}
+/*==========================================================
+PART 3A
+PREMIUM ENDING
+Luxury Envelope • Greeting Card • Wax Seal
+==========================================================*/
+
+/*==========================================================
+ENDING SCENE
+==========================================================*/
+
+#endingScene {
+	position: relative;
+
+	text-align: center;
+
+	overflow: hidden;
+
+	padding: 100px 20px;
+}
+
+.ending-content {
+	width: 100%;
+
+	max-width: 950px;
+
+	margin: auto;
+
+	position: relative;
+
+	z-index: 5;
+}
+
+/*==========================================================
+TITLE
+==========================================================*/
+
+.ending-title {
+	font-family: "Great Vibes", cursive;
+
+	font-size: 72px;
+
+	font-weight: 400;
+
+	color: #fff;
+
+	margin-bottom: 20px;
+
+	text-shadow:
+		0 0 18px rgba(255, 210, 230, 0.45),
+		0 0 45px rgba(255, 170, 220, 0.25);
+}
+
+.ending-subtitle {
+	font-size: 22px;
+
+	line-height: 1.8;
+
+	max-width: 720px;
+
+	margin: auto;
+
+	opacity: 0.92;
+
+	margin-bottom: 25px;
+}
+
+.click-note {
+	margin-bottom: 60px;
+
+	letter-spacing: 3px;
+
+	text-transform: uppercase;
+
+	font-size: 15px;
+
+	color: #ffd6ea;
+
+	animation: blink 2s infinite;
+}
+
+/*==========================================================
+ENVELOPE CONTAINER
+==========================================================*/
+
+.envelope-container {
+	display: flex;
+
+	justify-content: center;
+
+	align-items: center;
+
+	perspective: 1800px;
+
+	min-height: 75vh;
+}
+
+/*==========================================================
+ENVELOPE
+==========================================================*/
+
+.envelope {
+	position: relative;
+
+	width: 420px;
+
+	height: 300px;
+
+	overflow: hidden;
+
+	perspective: 1200px;
+}
+
+/*==========================================================
+ENVELOPE SHADOW
+==========================================================*/
+
+.envelope::after {
+	content: "";
+
+	position: absolute;
+
+	left: 50%;
+
+	bottom: -30px;
+
+	transform: translateX(-50%);
+
+	width: 320px;
+
+	height: 40px;
+
+	border-radius: 50%;
+
+	background: rgba(0, 0, 0, 0.3);
+
+	filter: blur(20px);
+
+	z-index: -1;
+}
+
+/*==========================================================
+BACK PANEL
+==========================================================*/
+
+.envelope-back {
+	position: absolute;
+
+	inset: 0;
+
+	background: linear-gradient(145deg, #ffe4ef, #ffc6dc);
+
+	border-radius: 16px;
+
+	overflow: hidden;
+
+	box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+/*==========================================================
+BOTTOM FLAP
+==========================================================*/
+
+.envelope-bottom {
+	position: absolute;
+
+	left: 0;
+
+	bottom: 0;
+
+	width: 100%;
+
+	height: 58%;
+
+	background: linear-gradient(180deg, #ffbfd8, #ff9fc4);
+
+	clip-path: polygon(0 0, 50% 100%, 100% 0, 100% 100%, 0 100%);
+
+	z-index: 4;
+}
+
+/*==========================================================
+LEFT FLAP
+==========================================================*/
+
+.envelope-left {
+	position: absolute;
+
+	left: 0;
+
+	top: 0;
+
+	width: 50%;
+
+	height: 100%;
+
+	background: #ffd5e6;
+
+	clip-path: polygon(0 0, 100% 50%, 0 100%);
+
+	z-index: 5;
+}
+
+/*==========================================================
+RIGHT FLAP
+==========================================================*/
+
+.envelope-right {
+	position: absolute;
+
+	right: 0;
+
+	top: 0;
+
+	width: 50%;
+
+	height: 100%;
+
+	background: #ffd5e6;
+
+	clip-path: polygon(100% 0, 100% 100%, 0 50%);
+
+	z-index: 5;
+}
+
+/*==========================================================
+TOP FLAP
+==========================================================*/
+
+.envelope-flap {
+	position: absolute;
+
+	left: 0;
+
+	top: 0;
+
+	width: 100%;
+
+	height: 54%;
+
+	background: linear-gradient(180deg, #ffd9e9, #ffb9d3);
+
+	clip-path: polygon(0 0, 50% 100%, 100% 0);
+
+	transform-origin: top;
+
+	transition: 1.2s;
+
+	z-index: 8;
+}
+
+/*==========================================================
+WAX SEAL
+==========================================================*/
+
+.wax-seal {
+	position: absolute;
+
+	left: 50%;
+
+	top: 118px;
+
+	transform: translateX(-50%);
+
+	width: 64px;
+
+	height: 64px;
+
+	border-radius: 50%;
+
+	background: radial-gradient(circle at top, #ff8eb7, #d60052);
+
+	display: flex;
+
+	justify-content: center;
+
+	align-items: center;
+
+	color: white;
+
+	font-size: 28px;
+
+	box-shadow:
+		0 10px 20px rgba(0, 0, 0, 0.35),
+		inset 0 3px 5px rgba(255, 255, 255, 0.35);
+
+	z-index: 20;
+
+	transition: 0.6s;
+}
+/*=========================================
+OPEN ENVELOPE
+=========================================*/
+
+.envelope.open .wax-seal {
+	opacity: 0;
+
+	transform: translateX(-50%) scale(0);
+
+	transition: 0.5s;
+}
+
+.envelope.open .envelope-flap {
+	transform: rotateX(180deg);
+
+	transition: 1s ease;
+}
+/*==========================================================
+FLOATING HEARTS
+==========================================================*/
+
+.love-heart {
+	position: absolute;
+
+	color: #ff4f8f;
+
+	font-size: 24px;
+
+	opacity: 0;
+
+	pointer-events: none;
+
+	animation: loveFloat 5s linear forwards;
+}
+
+/*==========================================================
+FLOWER PETALS
+==========================================================*/
+
+.petal {
+	position: absolute;
+
+	width: 18px;
+
+	height: 18px;
+
+	border-radius: 60% 0 60% 0;
+
+	background: #ffb4d3;
+
+	opacity: 0.85;
+
+	pointer-events: none;
+
+	animation: petalFall linear forwards;
+}
+
+/*==========================================================
+PREMIUM SPARKLES
+==========================================================*/
+
+.end-sparkle {
+	position: absolute;
+
+	width: 7px;
+
+	height: 7px;
+
+	border-radius: 50%;
+
+	background: white;
+
+	box-shadow:
+		0 0 12px white,
+		0 0 25px pink;
+
+	animation: endSparkle 3s linear infinite;
+}
+
+/*==========================================================
+FLOATING GLOW
+==========================================================*/
+
+.end-glow {
+	position: absolute;
+
+	width: 260px;
+
+	height: 260px;
+
+	border-radius: 50%;
+
+	background: radial-gradient(rgba(255, 180, 220, 0.22), transparent 70%);
+
+	filter: blur(55px);
+
+	pointer-events: none;
+
+	animation: glowMove 6s ease-in-out infinite;
+}
+
+/*==========================================================
+MOBILE
+==========================================================*/
+
+@media (max-width: 768px) {
+	.ending-title {
+		font-size: 48px;
+	}
+
+	.ending-subtitle {
+		font-size: 18px;
+	}
+
+	.envelope {
+		width: 300px;
+
+		height: 210px;
+	}
+
+	.wax-seal {
+		width: 48px;
+
+		height: 48px;
+
+		top: 82px;
+
+		font-size: 20px;
+	}
+}
