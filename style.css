@@ -22,12 +22,12 @@ body {
 /* ===========================
    BODY
 =========================== */
-body{
-    background-image:url("assets/images/bg.jfif");
-    background-size:cover;
-    background-position:center center;
-    background-repeat:no-repeat;
-    background-attachment:fixed;
+body {
+	background-image: url("assets/images/bg.jfif");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 @keyframes bgZoom {
 	from {
@@ -793,20 +793,20 @@ button:hover::before {
    MOBILE BACKGROUND
 ========================================== */
 
-@media (max-width:768px){
+@media (max-width: 768px) {
+	body {
+		background-image: url("assets/images/bg-mobile.png");
 
-    body{
+		background-size: cover;
 
-        background-image:url("assets/images/bg-mobile.png");
+		background-position: center center;
 
-        background-size:cover;
+		background-repeat: no-repeat;
 
-        background-position:center center;
-
-        background-repeat:no-repeat;
-
-        background-attachment:scroll;
-
-    }
-
+		background-attachment: scroll;
+	}
+	.glass,
+	.password-card {
+		margin-top: 90px;
+	}
 }
